@@ -183,7 +183,7 @@ exports.postReset = (req, res, next) => {
           subject: '重置密碼通知',
           html: `
             <p>已收到您重置密碼的請求</p>
-            <p>請點擊此連結以<a href="http://localhost:5000/reset/${token}">重置密碼</a>，連結將於一小時後失效</p>
+            <p>請點擊此連結以<a href="https://node-for-fattyshop.herokuapp.com/reset/${token}">重置密碼</a>，連結將於一小時後失效</p>
           `,
         });
       })
