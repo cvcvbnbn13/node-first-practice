@@ -1,0 +1,109 @@
+<div class="backdrop"></div>
+<header class="main-header">
+  <button id="side-menu-toggle">選單</button>
+  <nav class="main-header__nav">
+    <ul class="main-header__item-list">
+      <li class="main-header__item">
+        <a href="/" class="<%= path==='/' ? 'active' : '' %>">胖胖商城</a>
+      </li>
+
+      <% if(isAuthenticated) { %>
+      <li class="main-header__item">
+        <a href="/cart" class="<%= path==='/cart' ? 'active' : '' %>">購物車</a>
+      </li>
+
+      <li class="main-header__item">
+        <a href="/orders" class="<%= path==='/orders' ? 'active' : '' %>"
+          >購買紀錄</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          href="/admin/add-product"
+          class="<%= path === '/admin/add-product' ? 'active' : '' %>"
+          >商品上架</a
+        >
+      </li>
+
+      <li class="main-header__item">
+        <a
+          href="/admin/products"
+          class="<%= path === '/admin/products' ? 'active' : '' %>"
+          >賣家後臺</a
+        >
+      </li>
+      <% } %>
+    </ul>
+    <ul class="main-header__item-list">
+      <% if (!isAuthenticated) { %>
+      <li class="main-header__item">
+        <a href="/login" class="<%= path==='/login' ? 'active' : '' %>">登入</a>
+      </li>
+      <li class="main-header__item">
+        <a href="/signup" class="<%= path==='/signup' ? 'active' : '' %>"
+          >註冊</a
+        >
+      </li>
+      <% } else { %>
+      <li class="main-header__item">
+        <form action="/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%=token %>" />
+          <button class="logout-button" type="submit">登出</button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+
+  <nav class="mobile-nav">
+    <ul class="mobile-nav__item-list">
+      <li class="mobile-nav__item">
+        <a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
+      </li>
+      <% if (isAuthenticated) { %>
+      <li class="mobile-nav__item">
+        <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart"
+          >購物車</a
+        >
+      </li>
+      <li class="mobile-nav__item">
+        <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders"
+          >購買紀錄</a
+        >
+      </li>
+      <li class="mobile-nav__item">
+        <a
+          class="<%= path === '/admin/add-product' ? 'active' : '' %>"
+          href="/admin/add-product"
+          >商品上架
+        </a>
+      </li>
+      <li class="mobile-nav__item">
+        <a
+          class="<%= path === '/admin/products' ? 'active' : '' %>"
+          href="/admin/products"
+          >賣家後臺
+        </a>
+      </li>
+      <% } %> <% if (!isAuthenticated) { %>
+      <li class="mobile-nav__item">
+        <a class="<%= path === '/login' ? 'active' : '' %>" href="/login"
+          >登入</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a href="/signup" class="<%= path==='/signup' ? 'active' : '' %>"
+          >註冊</a
+        >
+      </li>
+      <% } else { %>
+      <li class="mobile-nav__item">
+        <form action="/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%=token %>" />
+          <button class="logout-button" type="submit">登出</button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon.png"
+    />
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/forms.css" />
+    <link rel="stylesheet" href="/style/product.css" />
+    <title><%= pageTitle%></title>
+  </head>
+  <body>
+    <%- include('../layouts/header.ejs') %>
+    <main>
+      <% if(errorMessage) { %>
+      <div class="message error-message"><%=errorMessage%></div>
+      <% } %>
+      <form
+        class="product-form"
+        action="/admin/<% if(editing) { %>edit-product<% } else { %>add-product<% } %>"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="form-control">
+          <label for="title">商品名稱</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value="<% if(editing || hasError) { %><%= product.title  %><% } %>"
+            class="<%=validationErrors.find(e=> e.param === 'title') ? 'invalid' : '' %>"
+          />
+        </div>
+
+        <div class="form-control">
+          <label for="image">商品圖像</label>
+          <input type="file" name="image" id="image" />
+        </div>
+
+        <div class="form-control">
+          <label for="price">商品價格</label>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            value="<% if(editing || hasError) { %><%= product.price%><% } %>"
+            class="<%=validationErrors.find(e=> e.param === 'price') ? 'invalid' : '' %>"
+          />
+        </div>
+
+        <div class="form-control">
+          <label for="description">商品簡述</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="80"
+            class="<%=validationErrors.find(e=> e.param === 'description') ? 'invalid' : '' %>"
+          >
+<% if(editing || hasError) { %><%= product.description%><% } %></textarea
+          >
+        </div>
+        <% if(editing) { %>
+        <input type="hidden" value="<%= product._id  %>" name="id" />
+        <% } %>
+
+        <input type="hidden" name="_csrf" value="<%=token %>" />
+        <button type="submit" class="btn">
+          <% if(editing) { %>編輯完成 <% } else { %> 增加商品 <% } %>
+        </button>
+      </form>
+    </main>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

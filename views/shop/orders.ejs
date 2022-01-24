@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon.png"
+    />
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/order.css" />
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <%- include('../layouts/header.ejs') %>
+    <main>
+      <% if(orders.length <=0) { %>
+      <h1>無購買紀錄</h1>
+      <% } else { %>
+      <ul>
+        <% orders.forEach(order => { %>
+        <li class="order">
+          <h3>
+            #訂單編號 : <%=order._id %> -
+            <a href="/orders/<%= order._id %> ">電子單據</a>
+          </h3>
+          <ul class="order-item-container">
+            <% order.products.forEach(item => { %>
+            <li class="order-item">
+              <%= item.data.title %> (<%=item.quantity%>)
+            </li>
+            <% }); %>
+          </ul>
+        </li>
+        <% }); %>
+      </ul>
+      <% } %>
+    </main>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGODB_USER": "shau",
+    "MONGODB_PASSWORD": "sun98765",
+    "STRIPE_KEY": "sk_test_51KKclgHqSB5YLMN0IXnmBavm7jLhsW23rtnTsbwmAOThKgJquAe5GRGbzuQTFNPSlX9SW3Ldneuxi9JmKF8ZiAc600wKm5r7mP"
+  }
+}

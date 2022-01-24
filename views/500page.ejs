@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon.png"
+    />
+    <link rel="stylesheet" href="/style/main.css" />
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <%- include('./layouts/header.ejs') %>
+    <div class="error__page">
+      <h1>系統出錯了!!</h1>
+      <p>正在修復當中，還請見諒。</p>
+    </div>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

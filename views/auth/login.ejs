@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon.png"
+    />
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/forms.css" />
+    <link rel="stylesheet" href="/style/auth.css" />
+    <title><%= pageTitle%></title>
+  </head>
+  <body>
+    <%- include('../layouts/header.ejs') %>
+    <main>
+      <% if(errorMessage) { %>
+      <div class="message error-message"><%=errorMessage%></div>
+      <% } %>
+      <form class="auth-form" action="/login" method="post">
+        <div class="form-control">
+          <label for="email">電子信箱(帳號) : </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value="<%=oldInput.email %> "
+            class="<%=validationErrors.find(e=> e.param === 'email') ? 'invalid' : '' %>"
+          />
+        </div>
+
+        <div class="form-control">
+          <label for="password">密碼 : </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value="<%=oldInput.password %>"
+            class="<%=validationErrors.find(e=> e.param === 'password') ? 'invalid' : '' %>"
+          />
+        </div>
+        <input type="hidden" name="_csrf" value="<%=token %>" />
+        <div class="auth-button">
+          <button type="submit" class="btn">登入</button>
+          <a class="reset" href="/reset">忘記密碼?</a>
+        </div>
+      </form>
+    </main>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

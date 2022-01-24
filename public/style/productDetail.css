@@ -1,0 +1,12 @@
+.center {
+  text-align: center;
+}
+
+.img-container {
+  height: 400px;
+  margin: 0 auto;
+}
+
+.product-img {
+  height: 100%;
+}

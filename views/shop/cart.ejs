@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/favicon.png"
+    />
+    <link rel="stylesheet" href="/style/main.css" />
+    <link rel="stylesheet" href="/style/cart.css" />
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <%- include('../layouts/header.ejs') %>
+    <main>
+      <% if (products.length > 0) { %>
+      <ul class="cart__item-list">
+        <% products.forEach(p=> { %>
+        <li class="cart-item">
+          <h1><%=p.productId.title%></h1>
+          <h4>數量 : ( <%=p.quantity %> )</h2>
+          <form action="/cart-delete-item" method="POST">
+            <input type="hidden" value="<%= p.productId._id %>" name="id" />
+            <input type="hidden" name="_csrf" value="<%=token %>" />
+            <button class="btn" type="submit">刪除</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+      <hr />
+      <!-- <form action="/create-order" method="POST" class="order">
+        <input type="hidden" name="_csrf" value="<%=token %>" />
+        <button class="btn" type="submit">結帳</button>
+      </form> -->
+      <div class="order">
+        <a class="btn" href="/checkout">結帳</a>
+      </div>
+      <% } else { %>
+      <h1>你的購物車內沒有商品</h1>
+      <% } %>
+    </main>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

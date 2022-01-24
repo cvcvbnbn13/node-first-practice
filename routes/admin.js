@@ -1,19 +1,45 @@
 const express = require('express');
 
-const path = require('path');
+const checkAuth = require('../middleware/checkAuth');
+const { body } = require('express-validator');
 
-const rootDirName = require('../utlis/path');
+const {
+  getAddProduct,
+  postAddProduct,
+  getProduct,
+  getEditProduct,
+  postEditProduct,
+  postDeleteProduct,
+} = require('../controllers/admin');
 
 const router = express.Router();
 
-// admin/add-product
-router.get('/add-product', (req, res, next) => {
-  res.sendFile(path.join(rootDirName, 'views', 'add.product.html'));
-});
+router.get('/add-product', checkAuth, getAddProduct);
+router.post(
+  '/add-product',
+  [
+    body('title').isString().trim(),
+    body('price').isNumeric(),
+    body('description').trim(),
+  ],
+  checkAuth,
+  postAddProduct
+);
 
-router.post('/add-product', (req, res, next) => {
-  console.log(req);
-  res.redirect('/');
-});
+router.get('/products', checkAuth, getProduct);
+
+router.get('/edit-product/:id', checkAuth, getEditProduct);
+router.post(
+  '/edit-product',
+  [
+    body('title').isString().trim(),
+    body('price').isNumeric(),
+    body('description').trim(),
+  ],
+  checkAuth,
+  postEditProduct
+);
+
+router.delete('/products/:id', checkAuth, postDeleteProduct);
 
 module.exports = router;
