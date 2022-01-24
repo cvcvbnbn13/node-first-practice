@@ -1,12 +1,12 @@
 .cart-item {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 50vw;
   margin: 0 auto;
   border: 1px solid #2f4f4f;
   border-radius: 10px;
-  padding: 0 1rem;
+  padding: 0 2rem;
   background-color: #fff;
   color: #2f4f4f;
   box-shadow: 5px 5px 0.25rem 0 rgba(0, 0, 0, 0.3);
