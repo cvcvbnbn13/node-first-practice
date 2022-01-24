@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "start": "NODE_ENV=production MONGODB_USER=shau MONGODB_PASSWORD=sun98765 STRIPE_KEY=sk_test_51KKclgHqSB5YLMN0IXnmBavm7jLhsW23rtnTsbwmAOThKgJquAe5GRGbzuQTFNPSlX9SW3Ldneuxi9JmKF8ZiAc600wKm5r7mP node app.js",
     "dev": "nodemon app.js"
   },
   "author": "",
