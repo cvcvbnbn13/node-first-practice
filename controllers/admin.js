@@ -100,7 +100,6 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   Product.findById(id)
-    // Product.findByPk(id)
     .then(product => {
       if (!product) {
         alert('Product not found');

@@ -9,6 +9,7 @@ const sendgridTransport = require('nodemailer-sendgrid-transport');
 const User = require('../models/user');
 const { validationResult } = require('express-validator');
 
+// sendGrid初始化
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
@@ -196,6 +197,7 @@ exports.postReset = (req, res, next) => {
 };
 
 exports.getNewPassword = (req, res, next) => {
+  // 這裡的token來自重置密碼的那封信
   const { token } = req.params;
   User.findOne({
     resetToken: token,

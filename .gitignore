@@ -2,3 +2,4 @@ node_modules
 practice-code
 server.cert
 server.key
+access.log

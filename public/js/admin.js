@@ -1,8 +1,10 @@
-const deleteProduct = btn => {
-  const id = btn.parentNode.querySelector('[name=id]').value;
-  const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
+const button = document.querySelector('.delete-btn');
 
-  const productElement = btn.closest('article');
+button.addEventListener('click', function () {
+  const id = button.parentNode.querySelector('[name=id]').value;
+  const csrf = button.parentNode.querySelector('[name=_csrf]').value;
+
+  const productElement = button.closest('article');
 
   fetch(`/admin/products/${id}`, {
     method: 'DELETE',
@@ -19,4 +21,4 @@ const deleteProduct = btn => {
     .catch(err => {
       console.log(err);
     });
-};
+});
