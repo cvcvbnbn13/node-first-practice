@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content=" script-src 'self' https://js.stripe.com/v3" />
+    <script src="https://js.stripe.com/v3/"></script>
     <link
     rel="icon"
     type="image/png"
@@ -31,7 +31,6 @@
       </div>
       <div class="order">
         <button id="order-btn" class="btn">確認結帳</button>
-        <script src="https://js.stripe.com/v3/"></script>
         <script>
           var stripe = Stripe(
             'pk_test_51KKclgHqSB5YLMN0uJLWwqTYwz2QLT3jkIAiqqjyetjGW9tYgBRPpV7F7379VWEi65Wn1iLlKJwKQYeTRRbgdA1300HjJ6Gpfk'

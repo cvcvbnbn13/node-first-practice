@@ -76,8 +76,6 @@ const User = require('./models/user');
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-// use
-app.use(helmet());
 // app.use(compression());
 app.use(morgan('combined', { stream: accessLogStream }));
 
